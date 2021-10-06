@@ -1,0 +1,126 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema predict
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema predict
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `predict` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `predict` ;
+
+-- -----------------------------------------------------
+-- Table `predict`.`typemachine`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `predict`.`typemachine` (
+  `idType` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`idType`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `predict`.`machine`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `predict`.`machine` (
+  `idMachine` INT NOT NULL AUTO_INCREMENT,
+  `cMax` DECIMAL(19,2) NULL DEFAULT NULL,
+  `cMin` DECIMAL(19,2) NULL DEFAULT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `tMax` DECIMAL(19,2) NULL DEFAULT NULL,
+  `tMin` DECIMAL(19,2) NULL DEFAULT NULL,
+  `tempMax` DECIMAL(19,2) NULL DEFAULT NULL,
+  `tempMin` DECIMAL(19,2) NULL DEFAULT NULL,
+  `idType` INT NULL DEFAULT NULL,
+  `typemachine_idType` INT NOT NULL,
+  PRIMARY KEY (`idMachine`),
+  INDEX `FK31314447D579F213` (`idType` ASC) VISIBLE,
+  INDEX `fk_machine_typemachine1_idx` (`typemachine_idType` ASC) VISIBLE,
+  CONSTRAINT `fk_machine_typemachine1`
+    FOREIGN KEY (`typemachine_idType`)
+    REFERENCES `predict`.`typemachine` (`idType`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `predict`.`futurevalues`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `predict`.`futurevalues` (
+  `idFutureValues` INT NOT NULL AUTO_INCREMENT,
+  `c1` DECIMAL(19,2) NULL DEFAULT NULL,
+  `c2` DECIMAL(19,2) NULL DEFAULT NULL,
+  `c3` DECIMAL(19,2) NULL DEFAULT NULL,
+  `dateHour` DATETIME NULL DEFAULT NULL,
+  `localTemp` DECIMAL(19,2) NULL DEFAULT NULL,
+  `machineTemp` DECIMAL(19,2) NULL DEFAULT NULL,
+  `t1` DECIMAL(19,2) NULL DEFAULT NULL,
+  `t2` DECIMAL(19,2) NULL DEFAULT NULL,
+  `t3` DECIMAL(19,2) NULL DEFAULT NULL,
+  `idMachine` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`idFutureValues`),
+  INDEX `FK4B4178C56C40CB24` (`idMachine` ASC) VISIBLE,
+  CONSTRAINT `FK4B4178C56C40CB24`
+    FOREIGN KEY (`idMachine`)
+    REFERENCES `predict`.`machine` (`idMachine`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `predict`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `predict`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NULL DEFAULT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `password` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `predict`.`valuesmachine`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `predict`.`valuesmachine` (
+  `idValues` INT NOT NULL AUTO_INCREMENT,
+  `c1` DECIMAL(19,2) NULL DEFAULT NULL,
+  `c2` DECIMAL(19,2) NULL DEFAULT NULL,
+  `c3` DECIMAL(19,2) NULL DEFAULT NULL,
+  `dateHour` DATETIME NULL DEFAULT NULL,
+  `localHum` DECIMAL(19,2) NULL DEFAULT NULL,
+  `localTemp` DECIMAL(19,2) NULL DEFAULT NULL,
+  `machineTemp` DECIMAL(19,2) NULL DEFAULT NULL,
+  `t1` DECIMAL(19,2) NULL DEFAULT NULL,
+  `t2` DECIMAL(19,2) NULL DEFAULT NULL,
+  `t3` DECIMAL(19,2) NULL DEFAULT NULL,
+  `idMachine` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`idValues`),
+  INDEX `FKE5194C56C40CB24` (`idMachine` ASC) VISIBLE,
+  CONSTRAINT `FKE5194C56C40CB24`
+    FOREIGN KEY (`idMachine`)
+    REFERENCES `predict`.`machine` (`idMachine`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
