@@ -1,4 +1,3 @@
-alert("chegou!");
 PREDICT.registerType = new Object();
 
 	$(document).ready(function(){
@@ -12,7 +11,7 @@ PREDICT.registerType = new Object();
 			console.log(typeMachine);
 				$.ajax({
 					type : "POST",
-					url : PREDICT.PATH + "type/register",
+					url : "/PredictOwn/br/com/predictown/rest/type/register",
 					data : JSON.stringify(typeMachine),
 					success : function (msg){
 						
