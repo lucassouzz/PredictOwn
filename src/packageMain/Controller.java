@@ -3,7 +3,9 @@ package packageMain;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
+
 
 public class Controller {
 	
@@ -15,16 +17,16 @@ public class Controller {
 	
 	public Controller () {
 		
-		emf = Persistence.createEntityManagerFactory("usuario");
+		emf = Persistence.createEntityManagerFactory("machine");
 		
 		em = emf.createEntityManager();
 	}
 	
-	public <T> void salvar (T generic) {
+	public void salvar (User ty) {
 		
 		em.getTransaction().begin();
 		
-		em.merge(generic);
+		em.merge(ty);
 		
 		em.getTransaction().commit();
 		

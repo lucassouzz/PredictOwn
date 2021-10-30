@@ -1,49 +1,46 @@
 package packageMain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+public class Machine implements Serializable{
 
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "machine")
-
-public class Machine {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private static final long serialVersionUID = 1L;
 
     private int idMachine;
 
     private String name;
+    
+    private String descriptionMachine;
 
-    private BigDecimal tMin;
+    private Double tMin;
 
-    private BigDecimal tMax;
+    private Double tMax;
 
-    private BigDecimal cMin;
+    private Double cMin;
 
-    private BigDecimal cMax;
+    private Double cMax;
 
-    private BigDecimal tempMin;
+    private Double tempMin;
 
-    private BigDecimal tempMax;
+    private Double tempMax;
 
-    @OneToOne
-    @JoinColumn(name = "idType")
-    private TypeMachine typeMachine_idType;
+    private int typeMachine_idType;
 
-    public TypeMachine getTypeMachine_idType() {
+
+    public String getDescriptionMachine() {
+        return descriptionMachine;
+    }
+
+    public void setDescriptionMachine(String descriptionMachine) {
+        this.descriptionMachine = descriptionMachine;
+    }
+    
+    public int getTypeMachine_idType() {
         return typeMachine_idType;
     }
 
-    public void setTypeMachine_idType(TypeMachine typeMachine_idType) {
+    public void setTypeMachine_idType(int typeMachine_idType) {
         this.typeMachine_idType = typeMachine_idType;
     }
     
@@ -66,51 +63,51 @@ public class Machine {
 	this.name = name;
     }
 
-    public BigDecimal gettMin() {
+    public Double gettMin() {
 	return tMin;
     }
 
-    public void settMin(BigDecimal tMin) {
+    public void settMin(Double tMin) {
 	this.tMin = tMin;
     }
 
-    public BigDecimal gettMax() {
+    public Double gettMax() {
 	return tMax;
     }
 
-    public void settMax(BigDecimal tMax) {
+    public void settMax(Double tMax) {
 	this.tMax = tMax;
     }
 
-    public BigDecimal getcMin() {
+    public Double getcMin() {
 	return cMin;
     }
 
-    public void setcMin(BigDecimal cMin) {
+    public void setcMin(Double cMin) {
 	this.cMin = cMin;
     }
 
-    public BigDecimal getcMax() {
+    public Double getcMax() {
 	return cMax;
     }
 
-    public void setcMax(BigDecimal cMax) {
+    public void setcMax(Double cMax) {
 	this.cMax = cMax;
     }
 
-    public BigDecimal getTempMin() {
+    public Double getTempMin() {
 	return tempMin;
     }
 
-    public void setTempMin(BigDecimal tempMin) {
+    public void setTempMin(Double tempMin) {
 	this.tempMin = tempMin;
     }
 
-    public BigDecimal getTempMax() {
+    public Double getTempMax() {
 	return tempMax;
     }
 
-    public void setTempMax(BigDecimal tempMax) {
+    public void setTempMax(Double tempMax) {
 	this.tempMax = tempMax;
     }
 
