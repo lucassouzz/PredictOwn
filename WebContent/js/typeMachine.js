@@ -1,20 +1,22 @@
-PREDICT.registerType = new Object();
+PREDICT.typeMachine = new Object();
 
 	$(document).ready(function(){
 		
-		PREDICT.registerType.register = function(){
+		PREDICT.typeMachine.register = function(){
 		
 			var typeMachine = new Object();
 				typeMachine.name = document.formAddTypeMachine.inputType.value;
-				typeMachine.desc = document.formAddTypeMachine.inputDesc.value;
+				typeMachine.descriptionType = document.formAddTypeMachine.inputDesc.value;
 				
 			console.log(typeMachine);
 				$.ajax({
 					type : "POST",
-					url : "/PredictOwn/br/com/predictown/rest/type/register",
+					url : PREDICT.PATH + "type/register",
 					data : JSON.stringify(typeMachine),
 					success : function (msg){
-						
+						alert(msg)
+						document.formAddTypeMachine.inputType.value = "";
+						document.formAddTypeMachine.inputDesc.value = "";
 					},
 					error : function (msg){
 						alert(msg)
