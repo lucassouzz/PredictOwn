@@ -52,4 +52,29 @@ public class GraphicRest extends UtilRest {
 	    return this.buildErrorResponse("Erro ao coletar dados");
 	}
     }
+	
+    @GET
+    @Path("/updateFutureValues")
+    @Consumes("application/*")
+    public Response updateFutureValues () {
+	try {
+	    
+	    List <FutureValues> listFutureValues = new ArrayList<FutureValues>();
+	    
+	    Connect conec = new Connect();
+	    Connection connection = conec.openConnection();
+	    JDBCFutureValuesDAO jdbcFutureValues = new JDBCFutureValuesDAO(connection);
+	    
+	    listFutureValues = jdbcFutureValues.searchFutureValues();
+	    
+	    conec.closeConnection();
+	    
+	    return this.buildResponse(listFutureValues);
+	    
+	}
+	catch(Exception e){
+	    e.printStackTrace();
+	    return this.buildErrorResponse("Erro ao coletar dados");
+	}
+    }	
 }
