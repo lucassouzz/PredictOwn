@@ -50,7 +50,8 @@ $(document).ready(function(){
 	                'rgba(54, 162, 235, 1)',	   
 	                'rgbargb(0,0,0,0.2)'
 	            ],
-	            borderWidth: 1
+	            borderWidth: 1,
+		    borderDash: [5,5]
 	        }
 	        ]
 	    },
@@ -187,6 +188,9 @@ $(document).ready(function(){
 			url : PREDICT.PATH + "graphic/updateValues",
 			success : function (data){
 				var dataObj = JSON.parse(data);
+				temperatureChart.data.datasets[0].data = [];
+				temperatureChart.data.datasets[1].data = [];
+				temperatureChart.data.labels = [];
 				for (i = 0; i < dataObj.length; i++){
 					temperatureChart.data.datasets[0].data.push(dataObj[i].machineTemp);
 					temperatureChart.data.datasets[1].data.push(dataObj[i].localTemp);
@@ -218,15 +222,24 @@ $(document).ready(function(){
 	
 	
 	PREDICT.graphic.updateFutureValues = function () {
+		var data = new Date()
+		var hours = data.getHours() + ":" + data.getMinutes();
 		$.ajax({
-			type : "POST", 
+			type : "GET", 
 			url : PREDICT.PATH + "graphic/updateFutureValues",
 			success : function (data){
-				var dataObj = JSON.parse(data);
-				console.log(dataObj);
-				
-				temperatureChart.data.datasets[2].data.push(dataObj.machineTemp);
-				temperatureChart.data.labels.push(hours);
+				var dataObj = JSON.parse(data);	
+				for(x = 0; x < temperatureChart.data.datasets[0].data.length; x++){
+					if (x == 5){
+						temperatureChart.data.datasets[2].data.push(temperatureChart.data.datasets[0].data[x]);
+					}else{
+						temperatureChart.data.datasets[2].data.push(null);
+					}							
+				}
+				for (i = 0; i < dataObj.length; i++){
+					temperatureChart.data.datasets[2].data.push(dataObj[i].machineTemp);
+					temperatureChart.data.labels.push(hours);	
+				}
 				temperatureChart.update();
 				
 			},
@@ -235,6 +248,6 @@ $(document).ready(function(){
 			}
 		})
 	}
-	//setInterval(PREDICT.graphic.updateFutureValues, 3000);
+	setInterval(PREDICT.graphic.updateFutureValues, 10500);
 	
 });
