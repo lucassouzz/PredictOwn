@@ -17,11 +17,13 @@ public class JDBCFutureValuesDAO {
 	this.connection = connection;
     }
     
-    public FutureValues searchFutureValues () {
+    public List<FutureValues> searchFutureValues () {
+	
+	List <FutureValues> listFutureValues = new ArrayList<FutureValues>();
 	
    	String command = "select * from futurevalues";
    	
-   	FutureValues futureValues = new FutureValues();
+   	FutureValues futureValues = null;
    	
    	try {
    	    Statement stmt = connection.createStatement();
@@ -39,6 +41,8 @@ public class JDBCFutureValuesDAO {
    		BigDecimal voltage3 = rs.getBigDecimal("t3");
    		Date dateHour = rs.getDate("dateHour");
    		
+   		futureValues = new FutureValues();
+   		
    		futureValues.setIdFutureValues(id);
    		futureValues.setC1(cCurrency1);
    		futureValues.setC2(cCurrency2);
@@ -49,13 +53,15 @@ public class JDBCFutureValuesDAO {
    		futureValues.setT2(voltage2);
    		futureValues.setT3(voltage3);
    		futureValues.setDateHour(dateHour);
+   		
+   		listFutureValues.add(futureValues);
    	    }
    	}
    	catch (Exception e) {
    	    e.printStackTrace();
    	}
    	
-   	return futureValues;
+   	return listFutureValues;
    	
        }
 
