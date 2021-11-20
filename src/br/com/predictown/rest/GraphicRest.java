@@ -16,10 +16,12 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
+import br.com.predictown.JDBC.JDBCFutureValuesDAO;
 import br.com.predictown.JDBC.JDBCMachineDAO;
 import br.com.predictown.JDBC.JDBCTypeMachineDAO;
 import br.com.predictown.JDBC.JDBCValuesDAO;
 import br.com.predictown.db.Connect;
+import packageMain.FutureValues;
 import packageMain.Machine;
 import packageMain.TypeMachine;
 import packageMain.Values;

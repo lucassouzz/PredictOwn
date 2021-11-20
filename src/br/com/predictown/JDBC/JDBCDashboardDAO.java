@@ -24,7 +24,7 @@ public class JDBCDashboardDAO {
 	/*
 	 * TODO: idmachine está fixo!
 	 */
-	String command = "SELECT * FROM valuesmachine WHERE machine_idmachine = 13 ORDER BY idFutureValues DESC limit 1";
+	String command = "SELECT * FROM valuesmachine WHERE machine_idmachine = 12 ORDER BY idValues DESC limit 1";
 
 	try {
 	    Statement stmt = connection.createStatement();
