@@ -5,6 +5,10 @@ $(document).ready(function() {
 	PREDICT.userPredict.register = function(){
 		
 		var userPredict = new Object;
+		
+		
+		
+		
 	}
 	
-})// End document adn function
+})// End document and function

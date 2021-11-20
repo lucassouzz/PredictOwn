@@ -88,10 +88,10 @@ $(document)
 									+ idMachine,
 							success : function(machine) {
 								machine = JSON.parse(machine)
-								console.log(machine)
+
 								$("#editMachine").html(PREDICT.machine.buildModalEdit(machine));
-								PREDICT.machine.supplySelect(selNewTypeMachine);
-								PREDICT.machine.setValueOfRegistry(machine);
+//								PREDICT.machine.supplySelect(selNewTypeMachine);
+//								PREDICT.machine.setValueOfRegistry(machine);
 							},
 							error : function(msg) {
 
@@ -261,12 +261,12 @@ $(document)
 								+ "<div class='card-body'>"
 								+ "<label for='exampleInputEmail1'>Temp. Máxima</label>"
 //								+ "<label for='exampleInputEmail1' id='tempMax'>"+ machine.tempMax+" °C</label>"
-								+ "<input type='email' class='form-control' id='newTempMax' aria-describedby='emailHelp'>"
+								+ "<input type='email' class='form-control' id='newTempMax' aria-describedby='emailHelp' placeholder='"+ machine.tempMax+"'>"
 								+ "</div>"
 								+ "</div>"
 								+ "</div>"
 								+ "</div>"
-//								+ "</div>"
+								+ "</div>"
 								+ "<div class='modal-footer'>"
 								+ "<button type='button' id='closeModal' class='btn btn-outline-primary' data-dismiss='modal'>Fechar</button>"
 								+ "<button type='button' class='btn btn-primary' onclick=PREDICT.machine.editMachine("

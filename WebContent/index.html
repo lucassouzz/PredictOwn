@@ -209,40 +209,47 @@
 						</ol>
 					</div>
 
-					<div class="row">
-						<div class="col-lg-4 mb-4">
-							<div class="card bg-secondary text-white">
-								<div class="card-body">
-									<img class="col-md-1" src="img/icon/electric-motor.png"
-										style="max-width: 100%; height: auto">
-									<hr>
-									Ultimos valores registrados
-									<div>
-										<table>
-											<tr>
-												<th>Tensão: 220v</th>
-												<th>Corrente: 20A</th>
-											</tr>
-											<tr>
-												<th>Temp. equipamento: 40ºC</th>
-												<th>Temp. ambiente: 32ºC</th>
-											</tr>
-										</table>
-									</div>
+<div class="row">
+						
+						
+    <div class="col-lg-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Motor de Testes <img class="col-md-1" src="img/icon/electric-motor.png" style="margin-left: 17%;max-width: 40%;height: auto;"></h6>
+            </div>
+            <div class="card-body">
 
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 mb-4">
-							<div class="card bg-secondary text-white">
-								<div class="card-body">
-									<img class="col-md-1" src="img/icon/add.png"
-										style="max-width: 100%; height: auto">
-									<hr>
-									<div>Adicionar novo equipamento</div>
-								</div>
-							</div>
-						</div>
+                <div class="alert alert-primary" role="alert"><a>Corrente: </a><b><span id="spanCorrente"></span><a>A</a></b>
+                </div>
+
+                <div class="alert alert-primary" role="alert"><a>Tensão: </a><b><span id="spanTensao"></span><a>V</a></b>
+                </div>
+
+                <div class="alert alert-primary" role="alert"><a>Temp. Motor: </a><b><span id="spanTempM"></span><a>°C</a></b>
+                </div>
+
+                <div class="alert alert-primary" role="alert"><a>Temp. Ambiente: </a><b><span id="spanTempL"></span><a>°C</a></b>
+                </div>
+
+                <div class="alert alert-primary" role="alert" style="text-align: center;">Gráficos de Predição</div>
+
+            </div>
+        </div>
+    </div>
+
+<div class="col-lg-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Adicionar Novo<img class="col-md-1" src="img/icon/electric-motor.png" style="margin-left: 17%;max-width: 40%;height: auto;"></h6>
+            </div>
+            <div class="card-body" style="
+">
+
+                <img class="col-md-1" src="img/icon/add.png" style="max-width: 50%;height: auto;margin: 25%;">
+									
+            </div>
+        </div>
+    </div>
 
 					</div>
 
@@ -302,6 +309,7 @@
 	<script src="js/ruang-admin.min.js"></script>
 	<script src="vendor/chart.js/Chart.min.js"></script>
 	<script src="js/demo/chart-area-demo.js"></script>
+	<script src="js/dashboard.js"></script>
 </body>
 
 </html>

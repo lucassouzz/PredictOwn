@@ -81,6 +81,7 @@ public class JDBCMachineDAO {
 		machine.setTypeMachine_idType(typemachine_idType);
 	    }
 
+	    
 	} catch (SQLException e) {
 	    e.printStackTrace();
 	}
