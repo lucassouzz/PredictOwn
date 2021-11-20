@@ -63,10 +63,10 @@
 					aria-labelledby="headingTable" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Registros</h6>
-						<a class="collapse-item" href="./catalogTypeMachine.html">Tipos
+						<a class="collapse-item" href="./registerTypeMachine.html">Tipos
 							de equipamento</a> <a class="collapse-item"
-							href="./catalogMachine.html">Equipamentos</a> <a
-							class="collapse-item" href="./catalogUser.html">Usuários</a>
+							href="./registerMachine.html">Equipamentos</a> <a
+							class="collapse-item" href="./registerUser.html">Usuários</a>
 					</div>
 				</div></li>
 
@@ -202,77 +202,50 @@
 				<div class="container-fluid" id="container-wrapper">
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Equipamentos</h1>
+						<h1 class="h3 mb-0 text-gray-800">Tipos de equipamentos</h1>
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="./">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Equipamentos</li>
+							<li class="breadcrumb-item">Catálogo</li>
+							<li class="breadcrumb-item active" aria-current="page">Tipos
+								de equipamento</li>
 						</ol>
-          </div>
-
-
-<div class="row">
-						
-						
-    <div class="col-lg-4">
-        <div class="card shadow-sm mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Motor de Testes <img class="col-md-1" src="img/icon/electric-motor.png" style="margin-left: 17%;max-width: 40%;height: auto;"></h6>
-            </div>
-            <div class="card-body">
-
-					<div class="row">
-						<div class="col-lg-4 mb-4">
-							<div class="card bg-secondary text-white">
-								<div class="card-body" onclick="window.location='http://localhost:8080/PredictOwn/graphic.html';">
-									<img class="col-md-1" src="img/icon/electric-motor.png"
-										style="max-width: 100%; height: auto">
-									<hr>
-									Ultimos valores registrados
-									<div>
-										<table>
-											<tr>
-												<th>Tensão: 220v</th>
-												<th>Corrente: 20A</th>
-											</tr>
-											<tr>
-												<th>Temp. equipamento: 40ºC</th>
-												<th>Temp. ambiente: 32ºC</th>
-											</tr>
-										</table>
-									</div>
-
-                <div class="alert alert-primary" role="alert"><a>Corrente: </a><b><span id="spanCorrente"></span><a>A</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert"><a>Tensão: </a><b><span id="spanTensao"></span><a>V</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert"><a>Temp. Motor: </a><b><span id="spanTempM"></span><a>°C</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert"><a>Temp. Ambiente: </a><b><span id="spanTempL"></span><a>°C</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert" style="text-align: center;">Gráficos de Predição</div>
-
-            </div>
-        </div>
-    </div>
-
-<div class="col-lg-4">
-        <div class="card shadow-sm mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Adicionar Novo<img class="col-md-1" src="img/icon/electric-motor.png" style="margin-left: 17%;max-width: 40%;height: auto;"></h6>
-            </div>
-            <div class="card-body" style="">
-
-                <img class="col-md-1" src="img/icon/add.png" style="max-width: 50%;height: auto;margin: 25%;">
-									
-            </div>
-        </div>
-    </div>
-
 					</div>
+
+					<div class="card">
+						<div
+							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+							<h6 class="m-0 font-weight-bold text-primary"></h6>
+						</div>
+
+						<div class="table-responsive" id="listTypeMachine"></div>
+
+						<div class="card-footer"></div>
+					</div>
+
+					<div id="editType" class="editTypeMachine"></div>
+
+					<!-- MODAL EXCLUSÃO 
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Excluir tipo de equipamento</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Tem certeza que deseja excluir este tipo de equipamento dos seus registros?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                  <button type="button" class="btn btn-primary" >Excluir</button>
+                </div>
+              </div>
+            </div>
+          </div>-->
+					<!-- FIM MODAL EXCLUSÃO -->
 
 					<!-- Modal Logout -->
 					<div class="modal fade" id="logoutModal" tabindex="-1"
@@ -330,10 +303,7 @@
 	<script src="js/ruang-admin.min.js"></script>
 	<script src="vendor/chart.js/Chart.min.js"></script>
 	<script src="js/demo/chart-area-demo.js"></script>
-
-	<script src="js/dashboard.js"></script>
-
-	<script src="js/graphic.js"></script>
+	<script src="js/managerTypeMachine.js"></script>
 </body>
 
 </html>

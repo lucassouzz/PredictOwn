@@ -15,6 +15,7 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css">
 <link href="css/ruang-admin.min.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -63,10 +64,10 @@
 					aria-labelledby="headingTable" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Registros</h6>
-						<a class="collapse-item" href="./catalogTypeMachine.html">Tipos
+						<a class="collapse-item" href="./registerTypeMachine.html">Tipos
 							de equipamento</a> <a class="collapse-item"
-							href="./catalogMachine.html">Equipamentos</a> <a
-							class="collapse-item" href="./catalogUser.html">Usuários</a>
+							href="./registerMachine.html">Equipamentos</a> <a
+							class="collapse-item" href="./registerUser.html">Usuários</a>
 					</div>
 				</div></li>
 
@@ -83,9 +84,6 @@
 						<a class="collapse-item" href="progress-bar.html">Informações</a>
 					</div>
 				</div></li>
-
-
-
 		</ul>
 		<!-- Sidebar -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -122,13 +120,17 @@
 						<li class="nav-item dropdown no-arrow mx-1"><a
 							class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <span
-								class="badge badge-danger badge-counter">3+</span>
+							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i>
+							<div id="divShowCounter">
+							</div> 
 						</a>
+						<!-- Modal de Alertas -->
 							<div
 								class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="alertsDropdown">
+								aria-labelledby="alertsDropdown"
+								id="divAlert">						
 								<h6 class="dropdown-header">Alerts Center</h6>
+								<!--
 								<a class="dropdown-item d-flex align-items-center" href="#">
 									<div class="mr-3">
 										<div class="icon-circle bg-primary">
@@ -155,14 +157,15 @@
 										<div class="icon-circle bg-warning">
 											<i class="fas fa-exclamation-triangle text-white"></i>
 										</div>
+										
 									</div>
 									<div>
 										<div class="small text-gray-500">December 2, 2019</div>
 										Spending Alert: We've noticed unusually high spending for your
 										account.
 									</div>
-								</a> <a class="dropdown-item text-center small text-gray-500"
-									href="#">Show All Alerts</a>
+								</a>--> <a class="dropdown-item text-center small text-gray-500" id="showTaskAlert"
+									href="#" onclick="PREDICT.alert.addAlert()">Show All Alerts</a>
 							</div></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
@@ -202,76 +205,26 @@
 				<div class="container-fluid" id="container-wrapper">
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Equipamentos</h1>
+						<h1 class="h3 mb-0 text-gray-800">Gráfico Temperatura</h1>
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="./">Home</a></li>
+							<li class="breadcrumb-item">Catálogo</li>
 							<li class="breadcrumb-item active" aria-current="page">Equipamentos</li>
 						</ol>
-          </div>
+					</div>
 
-
-<div class="row">
-						
-						
-    <div class="col-lg-4">
-        <div class="card shadow-sm mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Motor de Testes <img class="col-md-1" src="img/icon/electric-motor.png" style="margin-left: 17%;max-width: 40%;height: auto;"></h6>
-            </div>
-            <div class="card-body">
-
-					<div class="row">
-						<div class="col-lg-4 mb-4">
-							<div class="card bg-secondary text-white">
-								<div class="card-body" onclick="window.location='http://localhost:8080/PredictOwn/graphic.html';">
-									<img class="col-md-1" src="img/icon/electric-motor.png"
-										style="max-width: 100%; height: auto">
-									<hr>
-									Ultimos valores registrados
-									<div>
-										<table>
-											<tr>
-												<th>Tensão: 220v</th>
-												<th>Corrente: 20A</th>
-											</tr>
-											<tr>
-												<th>Temp. equipamento: 40ºC</th>
-												<th>Temp. ambiente: 32ºC</th>
-											</tr>
-										</table>
-									</div>
-
-                <div class="alert alert-primary" role="alert"><a>Corrente: </a><b><span id="spanCorrente"></span><a>A</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert"><a>Tensão: </a><b><span id="spanTensao"></span><a>V</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert"><a>Temp. Motor: </a><b><span id="spanTempM"></span><a>°C</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert"><a>Temp. Ambiente: </a><b><span id="spanTempL"></span><a>°C</a></b>
-                </div>
-
-                <div class="alert alert-primary" role="alert" style="text-align: center;">Gráficos de Predição</div>
-
-            </div>
-        </div>
-    </div>
-
-<div class="col-lg-4">
-        <div class="card shadow-sm mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Adicionar Novo<img class="col-md-1" src="img/icon/electric-motor.png" style="margin-left: 17%;max-width: 40%;height: auto;"></h6>
-            </div>
-            <div class="card-body" style="">
-
-                <img class="col-md-1" src="img/icon/add.png" style="max-width: 50%;height: auto;margin: 25%;">
-									
-            </div>
-        </div>
-    </div>
-
+					
+					<!-- Gráficos -->
+					<div id="canvasDiv">
+					<canvas id="temperatureChart" width="400" height="200"></canvas>
+					<br><br>
+					<h1 class="h3 mb-0 text-gray-800">Gráfico Corrente</h1>
+					<br>
+					<canvas id="currentChart" width="400" height="200"></canvas>
+					<br><br>
+					<h1 class="h3 mb-0 text-gray-800">Gráfico Tensão</h1>
+					<br>
+					<canvas id="voltageChart" width="400" height="200"></canvas>
 					</div>
 
 					<!-- Modal Logout -->
@@ -309,8 +262,8 @@
 					<div class="copyright text-center my-auto">
 						<span>copyright &copy; <script>
 							document.write(new Date().getFullYear());
-						</script> - developed by <b><a href="https://github.com/lucassouzz/"
-								target="_blank">lucassouzz</a></b>
+						</script> - developed by <b><a href="https://github.com/kalelfleith/"
+								target="_blank">kalelfleith</a></b>
 						</span>
 					</div>
 				</div>
@@ -330,10 +283,10 @@
 	<script src="js/ruang-admin.min.js"></script>
 	<script src="vendor/chart.js/Chart.min.js"></script>
 	<script src="js/demo/chart-area-demo.js"></script>
-
-	<script src="js/dashboard.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 	<script src="js/graphic.js"></script>
+	<script src="js/alertCenter.js"></script>
+	
 </body>
 
 </html>
