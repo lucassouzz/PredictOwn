@@ -23,7 +23,7 @@ public class JDBCMachineDAO {
 	/*
 	 * TODO: alterar a coluna para name
 	 */
-	String command = "UPDATE machine set nome=?, descriptionMachine=?, cMax=?, cMin=?,"
+	String command = "UPDATE machine set name=?, descriptionMachine=?, cMax=?, cMin=?,"
 		+ " tMax=?, tMin=?, tempMax=?, tempMin=?, typemachine_idType=? WHERE idmachine=?";
 		
 	PreparedStatement p;
@@ -107,7 +107,7 @@ public class JDBCMachineDAO {
 	/*
 	 * TODO: alterar a coluna para name
 	 */
-	String command = "INSERT INTO machine (idMachine, nome, descriptionMachine, cMax, cMin, tMax, tMin, tempMax, tempMin, typemachine_idType)"
+	String command = "INSERT INTO machine (idMachine, name, descriptionMachine, cMax, cMin, tMax, tMin, tempMax, tempMin, typemachine_idType)"
 		+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 	PreparedStatement p;
 
@@ -147,7 +147,7 @@ public class JDBCMachineDAO {
 		machine = new Machine();
 		int typemachine_idType = rs.getInt("typemachine_idType");
 		int idMachine = rs.getInt("idMachine");
-		String name = rs.getString("nome");
+		String name = rs.getString("name");
 		String description = rs.getString("descriptionMachine");
 		machine.setIdMachine(idMachine);
 		machine.setName(name);
