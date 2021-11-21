@@ -2,9 +2,9 @@ PREDICT.graphic = new Object();
 
 $(document).ready(function(){
 	
-	const labelData1 = ['12:25', '12:30', '12:35', '12:05', '12:10', '12:15', '12:20', '12:25', '12:30', '12:35'];
-	const labelData2 = null;
-	const values = null;
+	$(document).ready(function () {
+		PREDICT.graphic.updateValues();
+    });
 	
 	const ctx = document.getElementById('temperatureChart').getContext('2d');
 	const temperatureChart = new Chart(ctx, {
@@ -56,11 +56,11 @@ $(document).ready(function(){
 	        ]
 	    },
 	    options: {
-	        scales: {
-	            y: {
-	                beginAtZero: true
-	            }
-	        }
+	    	 scales: {
+		            y: {
+		                beginAtZero: true
+		            }
+		        }
 	    }
 	});
 	
@@ -71,7 +71,7 @@ $(document).ready(function(){
 	        labels: ['11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50'],
 	        datasets: [{
 	            label: ["Corrente 1"],
-	            data: [12, 19, 3, 5, 2, 3, 15, 19, 13, 5, 22, 13],
+	            data: [],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(255, 206, 86, 1)',
@@ -85,7 +85,7 @@ $(document).ready(function(){
 	        },
 	        {
 	        	label : ["Corrente 2"],
-	        	data: [9, 9, 13, 15, 12, 13, 5, 9, 3, 15, 2, 7],
+	        	data: [],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(255, 206, 86, 1)',
@@ -99,7 +99,7 @@ $(document).ready(function(){
 	        },
 	        {
 	        	label : ["Corrente 3"],
-	        	data: [4, 19, 16, 9, 16, 8, 7, 10, 13, 20, 22, 18],
+	        	data: [],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(255, 206, 86, 1)',
@@ -129,7 +129,7 @@ $(document).ready(function(){
 	        labels: ['11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50', '11:50'],
 	        datasets: [{
 	            label: ["Tensão 1"],
-	            data: [12, 19, 3, 5, 2, 3, 15, 19, 13, 5, 22, 13],
+	            data: [],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(255, 206, 86, 1)',
@@ -143,7 +143,7 @@ $(document).ready(function(){
 	        },
 	        {
 	        	label : ["Tensão 2"],
-	        	data: [9, 9, 13, 15, 12, 13, 5, 9, 3, 15, 2, 7],
+	        	data: [],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(255, 206, 86, 1)',
@@ -157,7 +157,7 @@ $(document).ready(function(){
 	        },
 	        {
 	        	label : ["Tensão 3"],
-	        	data: [4, 19, 16, 9, 16, 8, 7, 10, 13, 20, 22, 18],
+	        	data: [],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(255, 206, 86, 1)',
@@ -190,7 +190,16 @@ $(document).ready(function(){
 				var dataObj = JSON.parse(data);
 				temperatureChart.data.datasets[0].data = [];
 				temperatureChart.data.datasets[1].data = [];
+				currentChart.data.datasets[0].data = [];
+				currentChart.data.datasets[1].data = [];
+				currentChart.data.datasets[2].data = [];
+				voltageChart.data.datasets[0].data = [];
+				voltageChart.data.datasets[1].data = [];
+				voltageChart.data.datasets[2].data = [];
+	
 				temperatureChart.data.labels = [];
+				currentChart.data.labels = [];
+				voltageChart.data.labels = [];
 				for (i = 0; i < dataObj.length; i++){
 					temperatureChart.data.datasets[0].data.push(dataObj[i].machineTemp);
 					temperatureChart.data.datasets[1].data.push(dataObj[i].localTemp);
@@ -211,7 +220,8 @@ $(document).ready(function(){
 				currentChart.update();				
 				voltageChart.update();
 				
-			
+				PREDICT.graphic.updateFutureValues();
+				
 			},
 			error : function (msg){
 				alert("Quebrandoooo");
@@ -219,7 +229,6 @@ $(document).ready(function(){
 		});
 	}
 	setInterval(PREDICT.graphic.updateValues, 60000*5);
-	
 	
 	PREDICT.graphic.updateFutureValues = function () {
 		var data = new Date()
@@ -230,7 +239,7 @@ $(document).ready(function(){
 			success : function (data){
 				var dataObj = JSON.parse(data);	
 				for(x = 0; x < temperatureChart.data.datasets[0].data.length; x++){
-					if (x == 5){
+					if (x == 99){
 						temperatureChart.data.datasets[2].data.push(temperatureChart.data.datasets[0].data[x]);
 					}else{
 						temperatureChart.data.datasets[2].data.push(null);
@@ -248,6 +257,5 @@ $(document).ready(function(){
 			}
 		})
 	}
-	setInterval(PREDICT.graphic.updateFutureValues, 10500);
 	
 });
