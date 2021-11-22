@@ -76,10 +76,10 @@ $(document).ready(function(){
 	        	label : ["Corrente 2"],
 	        	data: [],
 	            backgroundColor: [
-	            	'rgba(135,206,250)'			                
+	            	'rgba(65,105,225)'			                
 	            ],
 	            borderColor: [
-	            	'rgba(135,206,250)'		              
+	            	'rgba(65,105,225)'		              
 	            ],
 	            borderWidth: 2
 	        },
@@ -87,10 +87,10 @@ $(document).ready(function(){
 	        	label : ["Corrente 3"],
 	        	data: [],
 	            backgroundColor: [
-	            	'rgba(135,206,250)'			                
+	            	'rgba(70,130,180)'			                
 	            ],
 	            borderColor: [
-	            	'rgba(135,206,250)'		                
+	            	'rgba(70,130,180)'		                
 	            ],
 	            borderWidth: 2
 	        },
@@ -150,7 +150,7 @@ $(document).ready(function(){
 	            label: ["Tensão 1"],
 	            data: [],
 	            backgroundColor: [
-	                'rgba(135,206,250)'		          
+	            	'rgba(135,206,250)'		          
 	            ],
 	            borderColor: [
 	            	'rgba(135,206,250)'	             
@@ -161,10 +161,10 @@ $(document).ready(function(){
 	        	label : ["Tensão 2"],
 	        	data: [],
 	            backgroundColor: [
-	            	'rgba(135,206,250)'		                
+	            	'rgba(65,105,225)'		                
 	            ],
 	            borderColor: [
-	            	'rgba(135,206,250)'	                
+	            	'rgba(65,105,225)'		                
 	            ],
 	            borderWidth: 1
 	        },
@@ -172,10 +172,10 @@ $(document).ready(function(){
 	        	label : ["Tensão 3"],
 	        	data: [],
 	            backgroundColor: [
-	            	'rgba(135,206,250)'		                
+	            	'rgba(70,130,180)'	                
 	            ],
 	            borderColor: [
-	            	'rgba(135,206,250)'		                
+	            	'rgba(70,130,180)'		                
 	            ],
 	            borderWidth: 1
 	        },
