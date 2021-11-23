@@ -39,7 +39,7 @@ public class JDBCValuesDAO {
 		BigDecimal cCurrency3 = rs.getBigDecimal("c3");
 		BigDecimal machineTemp = rs.getBigDecimal("machineTemp");
 		BigDecimal localTemp = rs.getBigDecimal("localTemp");
-		BigDecimal localHum = rs.getBigDecimal("localHum");
+		BigDecimal localHum = rs.getBigDecimal("humidity");
 		BigDecimal voltage1 = rs.getBigDecimal("t1");
 		BigDecimal voltage2 = rs.getBigDecimal("t2");
 		BigDecimal voltage3 = rs.getBigDecimal("t3");
