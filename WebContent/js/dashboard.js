@@ -16,19 +16,21 @@ $(document).ready(function(){
 				var spanVoltage = document.getElementById("spanTensao")
 				var spanMachineTemp = document.getElementById("spanTempM")
 				var spanLocalTemp = document.getElementById("spanTempL")
-				spanCurrent.textContent = current
-				spanVoltage.textContent = voltage
+				spanCurrent.textContent = current.toFixed(2)
+				spanVoltage.textContent = voltage.toFixed(2)
 				spanMachineTemp.textContent = lastValues.machineTemp
 				spanLocalTemp.textContent = lastValues.localTemp
 				
 			},
 			error : function (return_){
-				alert(return_)
+				alert("Ocorreu algo inesperado, entre em contato com o administrador.")
 			}
 			});
 		
 	}
 	
 	PREDICT.dashboard.getLastValues()
+	
+	setInterval(function(){PREDICT.dashboard.getLastValues()}, 1000);
 	
 })//End function and document
