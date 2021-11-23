@@ -29,7 +29,7 @@ public class JDBCTriggerAlertDAO {
 
 	String command = "select * from valuesmachine vm "
 		+ "inner join machine m on "
-		+ " vm.machineTemp > m.tempMax group by vm.machineTemp";
+		+ " vm.machineTemp > m.tempMax group by vm.machineTemp ORDER BY vm.idValues DESC LIMIT 100";
 	
 	Values values = null;
 
@@ -44,7 +44,7 @@ public class JDBCTriggerAlertDAO {
 		BigDecimal cCurrency3 = rs.getBigDecimal("c3");
 		BigDecimal machineTemp = rs.getBigDecimal("machineTemp");
 		BigDecimal localTemp = rs.getBigDecimal("localTemp");
-		BigDecimal localHum = rs.getBigDecimal("localHum");
+		//BigDecimal localHum = rs.getBigDecimal("localHum");
 		BigDecimal voltage1 = rs.getBigDecimal("t1");
 		BigDecimal voltage2 = rs.getBigDecimal("t2");
 		BigDecimal voltage3 = rs.getBigDecimal("t3");
@@ -58,7 +58,7 @@ public class JDBCTriggerAlertDAO {
 		values.setC3(cCurrency3);
 		values.setMachineTemp(machineTemp);
 		values.setLocalTemp(localTemp);
-		values.setLocalHum(localHum);
+		//values.setLocalHum(localHum);
 		values.setT1(voltage1);
 		values.setT2(voltage2);
 		values.setT3(voltage3);

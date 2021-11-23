@@ -2,6 +2,10 @@ PREDICT.alert = new Object();
 
 $(document).ready(function(){
 	
+	$(document).ready(function(){
+		PREDICT.alert.addAlert();
+	});
+	
 	PREDICT.alert.addAlert = function () {	
 		
 		var teste = "Motor de Indução Trifásico";	
@@ -24,12 +28,15 @@ $(document).ready(function(){
 							"</div> "+
 						"</a>");
 				}
+				
+				$("#divAlert").height(300);
 
 				PREDICT.alert.addCounter();
 				
 			}
 		})
 	}
+	setInterval(PREDICT.graphic.addAlert, 60000*5);
 	
 	PREDICT.alert.addCounter = function () {
 		let counter = document.querySelector("#divAlert").childElementCount;
