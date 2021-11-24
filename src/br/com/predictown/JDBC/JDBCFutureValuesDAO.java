@@ -23,7 +23,9 @@ public class JDBCFutureValuesDAO {
 	
 	List <FutureValues> listFutureValues = new ArrayList<FutureValues>();
 	
-   	String command = "select * from futurevalues";
+   	String command = "SELECT * FROM futurevalues v WHERE machine_idmachine = 13 AND v.idfuturevalues IN("
+   		+ "SELECT * FROM (SELECT v2.idfuturevalues FROM futurevalues v2 ORDER BY v2.idfuturevalues DESC LIMIT 60) as t) "
+   		+ "ORDER BY v.idfuturevalues ASC";
    	
    	FutureValues futureValues = null;
    	
