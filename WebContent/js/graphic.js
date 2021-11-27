@@ -20,7 +20,7 @@ $(document).ready(function(){
 	            borderColor: [
 	                'rgba(135,206,250)'	                             
 	            ],
-	            borderWidth: 2	          
+	            borderWidth: 1	          
 	        },
 	        {
 	        	label : ["Temperatura Ambiente"],
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	            borderColor: [
 	            	'rgba(135,206,235)'	                
 	            ],
-	            borderWidth: 2
+	            borderWidth: 1
 	        },
 	        {
 	        	label : ["Predição"],
@@ -42,7 +42,7 @@ $(document).ready(function(){
 	            borderColor: [	                   
 	                'rgba(255,69,0)'
 	            ],
-	            borderWidth: 2,
+	            borderWidth: 1,
 	            borderDash: [5,5]
 	        }
 	        ]
@@ -70,7 +70,7 @@ $(document).ready(function(){
 	            borderColor: [
 	            	'rgba(135,206,250)'	             
 	            ],
-	            borderWidth: 2
+	            borderWidth: 1
 	        },
 	        {
 	        	label : ["Corrente 2"],
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	            borderColor: [
 	            	'rgba(65,105,225)'		              
 	            ],
-	            borderWidth: 2
+	            borderWidth: 1
 	        },
 	        {
 	        	label : ["Corrente 3"],
@@ -92,7 +92,7 @@ $(document).ready(function(){
 	            borderColor: [
 	            	'rgba(70,130,180)'		                
 	            ],
-	            borderWidth: 2
+	            borderWidth: 1
 	        },
 	        {
 	        	label : ["Predição 1"],
@@ -236,6 +236,7 @@ $(document).ready(function(){
 				var dataObj = JSON.parse(data);
 				temperatureChart.data.datasets[0].data = [];
 				temperatureChart.data.datasets[1].data = [];
+				temperatureChart.data.datasets[2].data = [];
 				currentChart.data.datasets[0].data = [];
 				currentChart.data.datasets[1].data = [];
 				currentChart.data.datasets[2].data = [];
@@ -246,6 +247,7 @@ $(document).ready(function(){
 				temperatureChart.data.labels = [];
 				currentChart.data.labels = [];
 				voltageChart.data.labels = [];
+				
 				for (i = 0; i < dataObj.length; i++){
 					temperatureChart.data.datasets[0].data.push(dataObj[i].machineTemp);
 					temperatureChart.data.datasets[1].data.push(dataObj[i].localTemp);
@@ -262,6 +264,18 @@ $(document).ready(function(){
 					voltageChart.data.labels.push(hours);
 					
 				}
+				
+				temperatureChart.data.datasets[0].data.reverse();
+				temperatureChart.data.datasets[1].data.reverse();
+				temperatureChart.data.datasets[2].data.reverse();
+				currentChart.data.datasets[0].data.reverse();
+				currentChart.data.datasets[1].data.reverse();
+				currentChart.data.datasets[2].data.reverse();
+				voltageChart.data.datasets[0].data.reverse();
+				voltageChart.data.datasets[1].data.reverse();
+				voltageChart.data.datasets[2].data.reverse();
+				
+				
 				temperatureChart.update();
 				currentChart.update();				
 				voltageChart.update();
@@ -283,6 +297,7 @@ $(document).ready(function(){
 			type : "GET", 
 			url : PREDICT.PATH + "graphic/updateFutureValues",
 			success : function (data){
+
 				var dataObj = JSON.parse(data);	
 				for(x = 0; x < temperatureChart.data.datasets[0].data.length; x++){
 					if (x == 99){
@@ -299,9 +314,9 @@ $(document).ready(function(){
 				
 				for (y = 0; y < currentChart.data.datasets[0].data.length; y++) {
 					if (y == 99){
-						currentChart.data.datasets[3].data.push(temperatureChart.data.datasets[0].data[y]);
-						currentChart.data.datasets[4].data.push(temperatureChart.data.datasets[1].data[y]);
-						currentChart.data.datasets[5].data.push(temperatureChart.data.datasets[2].data[y]);
+						currentChart.data.datasets[3].data.push(currentChart.data.datasets[0].data[y]);
+						currentChart.data.datasets[4].data.push(currentChart.data.datasets[1].data[y]);
+						currentChart.data.datasets[5].data.push(currentChart.data.datasets[2].data[y]);
 					}else{
 						currentChart.data.datasets[3].data.push(null);
 						currentChart.data.datasets[4].data.push(null);
